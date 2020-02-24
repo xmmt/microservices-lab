@@ -1,4 +1,4 @@
-package microservicesnew.apigateway.dto;
+package com.microservices.apigateway.dto;
 
 import java.util.List;
 

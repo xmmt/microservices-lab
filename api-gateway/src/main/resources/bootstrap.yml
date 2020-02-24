@@ -1,6 +1,0 @@
-zuul:
-  routes:
-    product:
-      path: /product/**
-      url: http://localhost:8080
-      stripPrefix: true

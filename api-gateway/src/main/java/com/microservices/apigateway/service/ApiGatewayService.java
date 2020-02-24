@@ -1,8 +1,8 @@
-package microservicesnew.apigateway.service;
+package com.microservices.apigateway.service;
 
-import microservicesnew.apigateway.dto.*;
-import microservicesnew.apigateway.feign.OrderServiceFeignClient;
-import microservicesnew.apigateway.feign.WarehouseServiceFeignClient;
+import com.microservices.apigateway.dto.*;
+import com.microservices.apigateway.feign.OrderServiceFeignClient;
+import com.microservices.apigateway.feign.WarehouseServiceFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

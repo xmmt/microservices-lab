@@ -1,26 +1,21 @@
-package microservicesnew.apigateway.dto;
+package com.microservices.apigateway.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Item {
+public class ItemDto {
     private int id;
     private String name;
     private float price;
     private int actualAmount;
     private int availableAmount;
 
-    public Item() {}
-
-    public Item(@JsonProperty("id") int id,
-                @JsonProperty("name") String name,
-                @JsonProperty("price") float price,
-                @JsonProperty("actualAmount") int actualAmount,
-                @JsonProperty("availableAmount") int availableAmount) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.actualAmount = actualAmount;
-        this.availableAmount = availableAmount;
+    public static ItemDto fromItem(Item item) {
+        ItemDto itemDto = new ItemDto();
+        itemDto.setId(item.getId());
+        itemDto.setName(item.getName());
+        itemDto.setPrice(item.getPrice());
+        itemDto.setActualAmount(item.getActualAmount());
+        itemDto.setAvailableAmount(item.getAvailableAmount());
+        return itemDto;
     }
 
     public int getId() {

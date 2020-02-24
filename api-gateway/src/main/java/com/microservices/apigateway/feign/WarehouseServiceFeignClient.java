@@ -1,6 +1,6 @@
-package microservicesnew.apigateway.feign;
+package com.microservices.apigateway.feign;
 
-import microservicesnew.apigateway.dto.ItemDto;
+import com.microservices.apigateway.dto.ItemDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

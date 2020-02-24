@@ -1,4 +1,4 @@
-package microservicesnew.apigateway.dto;
+package com.microservices.apigateway.dto;
 
 public class AggregatedOrderItemDro {
 

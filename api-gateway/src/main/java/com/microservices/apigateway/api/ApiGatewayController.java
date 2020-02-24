@@ -1,7 +1,7 @@
-package microservicesnew.apigateway.api;
+package com.microservices.apigateway.api;
 
-import microservicesnew.apigateway.dto.AggregatedOrderDto;
-import microservicesnew.apigateway.service.ApiGatewayService;
+import com.microservices.apigateway.dto.AggregatedOrderDto;
+import com.microservices.apigateway.service.ApiGatewayService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
