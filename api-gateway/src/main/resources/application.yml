@@ -1,5 +1,27 @@
 spring:
   application:
-    name: apiGateway
+    name: api-gateway
 server:
-  port: 8090
+  port: 8080
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    preferIpAddress: true
+zuul:
+  routes:
+    payments:
+      path: /payments/**
+      service-id: payment-service
+      strip-prefix: false
+    orders:
+      path: /orders/**
+      service-id: order-service
+      strip-prefix: false
+    warehouse:
+      path: /warehouse/**
+      service-id: warehouse-service
+      strip-prefix: false
