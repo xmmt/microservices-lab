@@ -1,0 +1,73 @@
+version: '3.7'
+services:
+  eureka:
+    build: ./eureka
+    ports:
+      - '8671:8671'
+    restart: on-failure
+    network_mode: "host"
+
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - '8080:8080'
+    restart: on-failure
+    network_mode: "host"
+    depends_on:
+      - eureka
+      - rabbitmq
+
+  rabbitmq:
+    build: ./rabbitmq
+    ports:
+      - '4368:4369'
+      - '5672:5672'
+      - '25672:25672'
+      - '15672:15672'
+    network_mode: "host"
+
+  warehouse:
+    build: ./warehouse
+    volumes:
+      - ./warehouse/data:/data
+    ports:
+      - 8200:8200
+    restart: on-failure
+    environment:
+      - SPRING_RABBITMQ_HOST=127.0.0.1
+      - SPRING_RABBITMQ_PORT=5672
+      - SPRING_RABBITMQ_USERNAME=user
+      - SPRING_RABBITMQ_PASSWORD=user
+    depends_on:
+      - orders
+      - rabbitmq
+      - eureka
+    network_mode: "host"
+
+  orders:
+    build: ./orders
+    hostname: orders
+    volumes:
+      - ./orders/data:/data
+    restart: on-failure
+    environment:
+      - SPRING_RABBITMQ_HOST=127.0.0.1
+      - SPRING_RABBITMQ_PORT=5672
+      - SPRING_RABBITMQ_USERNAME=user
+      - SPRING_RABBITMQ_PASSWORD=user
+    depends_on:
+      - rabbitmq
+      - eureka
+    network_mode: "host"
+
+  payment:
+    build: ./payment
+    volumes:
+      - ./payment/data:/data
+    ports:
+      - 8300:8300
+    depends_on:
+      - rabbitmq
+      - eureka
+    restart: on-failure
+    network_mode: "host"

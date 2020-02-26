@@ -1,5 +1,14 @@
 version: '3.7'
 services:
+  rabbitmq:
+    build: ./rabbitmq
+    ports:
+      - '4368:4369'
+      - '5672:5672'
+      - '25672:25672'
+      - '15672:15672'
+    network_mode: "host"
+
   eureka:
     build: ./eureka
     ports:
